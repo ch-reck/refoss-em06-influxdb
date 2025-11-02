@@ -1,16 +1,16 @@
-# Read Refoss EM06 energy data and feed into InfluxDB
+# Refoss EM06 energy meter data reader with feed to InfluxDB
 
-This python script reads the electricity measurements from one or more Refoss EM06 6-Channel Energy Meters
+This python script reads the electricity measurements from one or more Refoss EM06 6-Channel Energy Meters and writes data to InfluxDB. A grafana dashboard is provided as an example for displaying each 3-phase group Consumption, per phase Power, and the voltage values.
 
 Setup:
   1. Python3 with necessary pip modules installed, including influxdb API, see includes in script.
      
-  3. Optional, crontab to launch the reader the desired intervals, example:
+  3. crontab to launch the reader the desired intervals, example:
      ```
      *  *  *  *  *   python3 /opt/refoss-em06-influxdb.py -r=192.168.5.15/EG/OG -r=192.168.5.14/KG/GH 2>&1 >> /var/log/refoss-em06-influxdb.log
      ```
      
-     Note: multiple `-r <IP-Address>` allows the
+     Note: multiple `-r <IP-Address>` allows reading multiple units in one call.
      
      Commandline properties help with: 
      `/opt/refoss-em06-influxdb.py --help`
@@ -21,7 +21,7 @@ Setup:
        -h | --help            show this help message and exit
        -r | --refossEM06 192.1.1.1/A/B
                               The EM06 device IPAddress with two names /A/B for two 3-phase groups 
-                              or as default 'A1/B1/C1/A2/B2/C2'
+                              or as default 'A1/B1/C1/A2/B2/C2', multiple units can be specified
        -i | --dbip DBIP       The influxdb IP-Address
        -d | --dbname DBNAME   The influxdb name
        -u | --dbuser DBUSER   The influxdb username
