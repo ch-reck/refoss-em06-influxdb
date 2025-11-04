@@ -76,7 +76,7 @@
               }
             ]
           },
-          "unit": "watth"
+          "unit": "watt"
         },
         "overrides": [
           {
@@ -96,6 +96,10 @@
               {
                 "id": "custom.lineWidth",
                 "value": 0
+              },
+              {
+                "id": "unit",
+                "value": "watth"
               }
             ]
           },
@@ -1062,13 +1066,14 @@
     }
   ],
   "preload": false,
+  "refresh": "5m",
   "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now/d",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
